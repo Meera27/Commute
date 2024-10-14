@@ -1,0 +1,40 @@
+<app-header></app-header>
+<div class="container">
+    <h3 class="text-primary">Bill</h3>  
+    <table class="table table-striped table-bordered">
+        <tbody>
+            <tr>
+                <td>Bill Id</td>
+                <td>{{bill.billId}}</td>
+            </tr> 
+            <tr>
+                <td>Ride Id</td>
+                <td>{{bill.tripId}}</td>
+            </tr>
+            <tr>
+                <td>No Of Km</td>
+                <td>{{bill.noOfKm}}</td>
+            </tr>
+            <tr>
+                <td>Total Bill</td>
+                <td>{{bill.totalBill}}</td>
+            </tr>
+            <tr>
+                <td>No of Occupants</td>
+                <td>{{bill.noOfOccupants}}</td>
+            </tr>
+            <!-- <tr>
+                <td>Fee Id</td>
+                <td>{{bill.feeId}}</td>
+            </tr> -->
+            <tr>
+                <td>Cost per Occupant</td>
+                <td>{{bill.costPerOccupant}}</td>
+            </tr>
+            <!-- <tr>
+                <td>Your Bill</td>
+                <td>{{bill.costPerOccupant}}*</td>
+            </tr> -->
+        </tbody>
+    </table>
+</div>

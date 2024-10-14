@@ -1,0 +1,90 @@
+<app-seeker-header></app-seeker-header>
+
+<div class="container">
+    <div class="h3 text-primary">Update Rideseeker</div>
+    <form #rideseekerForm ="ngForm" (ngSubmit)="onSubmit(rideseekerForm.value)">
+        <div class="form-group">
+            <label>Rideseeker Id</label>
+            <input type="text" class="form-control" name="rsId" readonly [(ngModel)]="rideseeker.rsId">
+        </div>
+
+
+
+        <div class="form-group">
+            <label>AdharCard Number</label>
+            <input type="text" required class="form-control"  name="adharCard" [(ngModel)]="rideseeker.adharCard" #adharcardRef="ngModel" required  pattern="^[0-9]{12}$">
+        </div>
+        <div *ngIf="adharcardRef.errors &&(adharcardRef.touched || adharcardRef.dirty)" class="alert alert-danger" >
+            AdharCard Number should contain 12 digits
+        </div>
+
+
+
+        <div class="form-group">
+            <label>Email Id</label>
+            <input type="text" class="form-control"  name="emailId" [(ngModel)]="rideseeker.emailId" #emailidRef="ngModel" required pattern="^[a-zA-Z0-9]+@cognizant.com$" >
+        </div>
+        <div *ngIf="emailidRef.errors && (emailidRef.touched || emailidRef.dirty)" class="alert alert-danger" >
+            <div [hidden]="!emailidRef.errors['required']">Email Id is mandatory</div>
+            <div [hidden]="!emailidRef.errors['pattern']">Email Id should end with '@cognizant.com'</div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="text" class="form-control" name="phone" [(ngModel)]="rideseeker.phone" #phoneRef="ngModel" required pattern="^[0-9]{10}$" >               
+        </div>
+        <div *ngIf="phoneRef.errors && (phoneRef.touched || phoneRef.dirty)" class="alert alert-danger">
+            Mobile number should contain 10 digits
+        </div>
+
+
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control"  name="firstName" [(ngModel)]="rideseeker.firstName" #firstnameRef="ngModel" required>
+        </div>
+        <div *ngIf="firstnameRef.errors &&(firstnameRef.touched || firstnameRef.dirty)" class="alert alert-danger">
+            First Name is mandatory
+        </div>
+
+
+
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control"  name="lastName" [(ngModel)]="rideseeker.lastName" #lastnameRef="ngModel" required minlength="3">
+        </div>
+        <div *ngIf="lastnameRef.errors && (lastnameRef.touched || lastnameRef.dirty)" class="alert alert-danger">
+            <div [hidden]="!lastnameRef.errors['required']">Last Name is mandatory</div>
+            <div [hidden]="!lastnameRef.errors['minlength']">Last Name should contain a minimum of 3 characters</div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control"  name="address" [(ngModel)]="rideseeker.address" #addressRef="ngModel" required>
+        </div>
+        <div *ngIf="addressRef.errors && (addressRef.touched || addressRef.dirty)" class="alert alert-danger">
+            Address is mandatory
+        </div>
+
+        <div class="form-group">
+                <label>Status</label>&nbsp;&nbsp;
+                <div class="form-check-inline">
+                    <input type="radio" class="form-check-input" value="registered" name="status" [(ngModel)]="rideseeker.status" required>
+                    <label class="form-check-label">Register</label>
+                </div>
+                <!-- <div class="form-check-inline">
+                    <input type="radio" class="form-check-input" value="Un-Register" name="status" ngModel>
+                    <label class="form-check-label">Un-Register</label>
+                </div> -->
+        </div>
+        <br>
+        <button [disabled]=rideseekerForm.invalid class="btn btn-primary">Update</button>
+
+        
+    </form>
+</div>
+
+

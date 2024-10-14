@@ -1,0 +1,32 @@
+<app-seeker-header></app-seeker-header>
+<div class="container">
+    <h3 class="text-primary">Trips List</h3>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <th>Trip Id</th>
+            <th>Ride Provider Id</th>
+            <th>Vehicle Id</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>No. Of Seats</th>
+            <th>Seats Filled</th>
+            <th>Source</th>
+            <th>Destination</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let trip of trips">
+                <td>{{trip.tripId}}</td>
+                <td>{{trip.rpId}}</td>
+                <td>{{trip.vehicleId}}</td>
+                <td>{{trip.rideDate}}</td>
+                <td>{{trip.rideTime}}</td>
+                <td>{{trip.noOfSeat}}</td>
+                <td>{{trip.seatsFilled}}</td>
+                <td>{{trip.fromLoc}}</td>
+                <td>{{trip.toLoc}}</td>
+                <!-- <td><button class="btn btn-warning" style="float: right;" (click)="BookRide(trip)">Book</button></td> -->
+                <td><button class="btn btn-warning" style="float: right;"[disabled]="trip.seatsFilled === trip.noOfSeat"(click)="BookRide(trip)">Book</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

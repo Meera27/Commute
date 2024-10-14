@@ -1,0 +1,39 @@
+<app-seeker-header></app-seeker-header>
+<div class="container">
+    <h3 class="text-primary">Rideseeker Details</h3>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <th>Rideseeker Id</th>
+            <th>Adhar Card</th>
+            <th>Email Id</th>
+            <th>Phone</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rideseeker of rideseekers">
+                <td>{{rideseeker.rsId}}</td>
+                <td>{{rideseeker.adharCard}}</td>
+                <td>{{rideseeker.emailId}}</td>
+                <td>{{rideseeker.phone}}</td>
+                <td>{{rideseeker.firstName}}</td>
+                <td>{{rideseeker.lastName}}</td>
+                <td>{{rideseeker.address}}</td>
+                <td>{{rideseeker.status}}</td>
+                <td>
+                    <!-- (click)="onDelete(rideseeker.rsId)" -->
+                    <button class="btn btn-danger" (click)="onDelete(rideseeker.rsId)">Un-Register</button>
+                       <button class="btn btn-success"(click)="onUpdate(rideseeker.rsId)">Update</button>
+                       <button class="btn btn-success"(click)="onBook(rideseeker.rsId)">Book Ride</button>
+                       <button class="btn btn-success"(click)="viewBookings(rideseeker.rsId)">View Booking</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<!-- <p>works fine</p> -->

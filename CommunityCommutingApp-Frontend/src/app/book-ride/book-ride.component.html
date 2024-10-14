@@ -1,0 +1,57 @@
+<app-seeker-header></app-seeker-header>
+<div class="container">
+    <h3 class="text-primary">Book Ride</h3>
+    <form class="col-5" #booking="ngForm" (ngSubmit)="onSubmit(booking.value)">
+        <table class="table table-striped table-bordered">
+            <tbody>
+                <tr>
+                    <td>Trip Id</td>
+                    <td>{{trip.tripId}}</td>
+                </tr>
+                <tr>
+                    <td>Seeker Id</td>
+                    <td>{{rsId}}</td>
+                </tr>
+                <tr>
+                    <td>Source</td>
+                    <td>{{trip.fromLoc}}</td>
+                </tr>
+                <tr>
+                    <td>Destination</td>
+                    <td>{{trip.toLoc}}</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td>{{trip.rideDate}}</td>
+                </tr>
+                <tr>
+                    <td>Time</td>
+                    <td>{{trip.rideTime}}</td>
+                </tr>
+                <tr>
+                    <td>Number of Seats</td>
+                    <td>{{trip.noOfSeat}}</td>
+                </tr>
+                <tr>
+                    <td>Seats Available</td>
+                    <td>{{trip.noOfSeat -trip.seatsFilled}}</td>
+                </tr>
+                <tr>
+                    <td>Number Of Occupantss</td>
+                    <div class="form-group">
+                    <td>
+                    <select name="numberOfSeat" ngModel>
+                        <option *ngFor="let number of numbers" [value]="number" >{{number}}</option>
+                    </select></td>
+                    </div>
+                </tr>
+                
+                <tr>
+                    
+                    <td></td>
+                    <td><button type="submit" class="btn btn-primary">Book Ride</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

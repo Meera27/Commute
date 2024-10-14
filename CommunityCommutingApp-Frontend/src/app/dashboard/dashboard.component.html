@@ -1,0 +1,51 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <h3 class="text-primary">Ride Providers List</h3>
+  <table  class="table table-striped table-bordered">
+    <thead>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Aadhar No.</th>
+      <th>Email Id</th>
+      <th>Phone No.</th>
+      <th>Valid Upto</th>
+      <th>Status</th>
+      <th>Driving Licence No.</th>
+      <th>View Rides</th>
+      <th>Add Rides</th>
+      <th>Update Rider</th>
+      <th>View Report</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rider of rideProvider">
+        <td>{{ rider.firstName }}</td>
+        <td>{{ rider.lastName }}</td>
+        <td>{{ rider.aadharcard }}</td>
+        <td>{{ rider.emailId }}</td>
+        <td>{{ rider.phone }}</td>
+        <td>{{ rider.validUpto }}</td>
+        <td>{{ rider.status }}</td>
+        <td>{{ rider.dlNo }} </td>
+        <!-- <span>&#x1F60A;</span> -->
+        <td>
+          <button type="submit" style="color:black" class="btn btn-outline-primary" (click)="viewRides(rider.rpId)">
+            View Rides</button>
+        </td>
+        <td>
+          <button type="submit" style="color:black" class="btn btn-outline-info" [disabled]="rider.status === 'Un-Registered'" (click)="addRide(rider)">
+            Add Ride
+          </button>
+        </td>
+        <td>
+          <button type="submit" style="color:black" class="btn btn-outline-warning"(click)="updateRide(rider)">
+            Update Rider
+          </button>
+        </td>
+        <td>
+          <button type="submit" class="btn btn-outline-dark"(click)="viewBillReport(rider.rpId)">
+            View Report</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

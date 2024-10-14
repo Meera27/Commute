@@ -1,0 +1,30 @@
+
+<app-header></app-header>
+<div class="d-flex align-items-center justify-content-center" style="height:100vh;">
+    <div class="card">
+      <div class="card-body">
+        <div class="vehicle-card">
+          <h1><p> <b>{{ride.carName}} ({{ride.vehicleNo}}) </b></p></h1>
+          <p>Car Type : <b>{{ride.carType}}</b></p>
+          <p>Fuel Type : <b>{{ride.fuelType}}</b></p>
+          <p>Number of Seats : <b>{{ride.noOfSeats}}</b></p>
+          <p>Ride Time : <b>{{ride.rideTime}}</b></p>
+          <p>Ride Date : <b>{{ride.rideDate}}</b></p>
+          <p>Source : <b>{{ride.source}}</b></p>
+          <p>Destination : <b>{{ride.destination}}</b></p>
+          <!-- <p class="card-text" *ngIf="showText" [ngStyle]="{color:textColor}">{{ textToDisplay }}</p>   -->
+          <p *ngIf="tripStatus" [style.color]="textColor"><b>{{buttonText}}</b></p>
+          <p *ngIf="(trip.rideStatus === 'completed')" [style.color]="statusColor"><b>Ride Completed</b></p>
+        </div>
+        <td><button type="submit" class="btn btn-info" [disabled]="trip.seatsFilled==0" (click)="showBookings(ride.tripId)">Manage Booking</button></td>      
+        <td><button type="submit" class="btn btn-warning" [disabled]="(trip.rideStatus === 'completed')" (click)="updateRide(ride)">Update Ride</button></td> 
+        
+
+        <td> <button type="submit" (click)="startTrip(ride)" class="btn btn-success"[disabled]="enabled || (trip.rideStatus === 'completed') || trip.seatsFilled==0">Start Trip</button></td>
+        <td> <button type="submit" (click)="endTrip(ride)"  class="btn btn-danger" [disabled]="!enabled">End Trip</button></td>
+      </div>
+<!-- <button type="submit" style="display: block; margin: auto;" class="btn btn-primary" (click)="onClick()">Previous</button> -->
+    </div>
+    
+  </div>
+

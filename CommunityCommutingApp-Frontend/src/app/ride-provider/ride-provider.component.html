@@ -1,0 +1,82 @@
+<app-header></app-header>
+<div class="container">
+    <div class="h3 text-primary">Register New Ride Provider</div>
+    <form #rideProvider="ngForm" (ngSubmit)="onSubmit(rideProvider.value)">
+   <div class="form-group">
+       <label>First Name</label>
+       <input type="text" class="form-control" name="firstName" #fNameRef="ngModel" ngModel required pattern="[a-zA-Z]+">
+       <div *ngIf="fNameRef.errors && (fNameRef.touched || fNameRef.dirty)">
+        <p [hidden]="!fNameRef.errors['required']"> Enter First Name</p>
+        <p [hidden]="!fNameRef.errors['pattern']">Fist Name can only contain letters</p>
+        <!-- <p [hidden]="!fNameRef.errors['minlength']">Fist Name should be minimum 3 characters</p> -->
+        </div>
+   </div>
+   <div class="form-group">
+       <label>Last Name</label>
+       <input type="text" class="form-control" name="lastName" #lNameRef="ngModel"  ngModel required minlength="3" pattern="[a-zA-Z]+">
+       <div *ngIf="lNameRef.errors && (lNameRef.touched ||lNameRef.dirty)">
+        <p [hidden]="!lNameRef.errors['required']">Enter Last Name</p>
+        <p [hidden]="!lNameRef.errors['pattern']">Last Name can only contain letters</p>
+        <p [hidden]="!lNameRef.errors['minlength']">Last Name should be minimum 3 characters</p>
+       </div>
+   </div>
+
+   <div class="form-group">
+    <label>Phone Number</label>
+    <input type="text" class="form-control" name="phone" #phoneRef="ngModel" ngModel required maxlength="10" pattern="^[987][0-9]{9}$">
+    <div *ngIf="phoneRef.errors && (phoneRef.touched || phoneRef.dirty)" >
+        <p [hidden]="!phoneRef.errors['required']"> Enter Phone Number</p>
+        <p [hidden]="!phoneRef.errors['pattern']"> Phone Number should start with 9 8 or 7</p>
+        <p [hidden]="!phoneRef.errors['maxlength']"> Phone Number should contain 10 digits</p>
+        </div>
+    <div></div>
+</div>
+
+<div class="form-group">
+    <label>Email Id</label>
+    <input type="text" class="form-control" name="emailId" placeholder="abc@cognizant.com" #emailRef="ngModel" ngModel required pattern="^[A-Za-z0-9._%+-]+@cognizant\.com$">
+    <div *ngIf="emailRef.errors && (emailRef.touched ||emailRef.dirty)">
+        <p [hidden]="!emailRef.errors['required']">Enter Email Address</p>
+        <p [hidden]="!emailRef.errors['pattern']">Email should end with '@cognizant.com'</p>
+    </div>
+</div>
+
+
+   <div class="form-group">
+    <label>Aadhar Card</label>
+    <input type="text" class="form-control" name="aadharcard" ngModel #aadharRef="ngModel" required maxlength="12" pattern="^[0-9]{12}">
+    <div *ngIf="aadharRef.errors && (aadharRef.touched ||aadharRef.dirty)">
+        <p [hidden]="!aadharRef.errors['required']">Enter Aadhar Number</p>
+        <!-- <p [hidden]="!aadharRef.errors['maxlength']">Aadhar Number must contain 12 digits</p> -->
+        <p [hidden]="!aadharRef.errors['pattern']">Aadhar Number must be 12 digits</p>
+    </div>
+</div>
+<div class="form-group">
+    <label>Driving Licence Number</label>
+    <input type="text" placeholder="0000-0000-0000-0000" class="form-control" name="dlNo" #dlNo="ngModel" ngModel required pattern="\d{4}-\d{4}-\d{4}-\d{4}">
+    <div *ngIf="dlNo.errors && (dlNo.touched ||dlNo.dirty)">
+        <p [hidden]="!dlNo.errors['required']">Enter Licence Number</p>
+        <p [hidden]="!dlNo.errors['pattern']">Licence Number must be 16 digits</p>
+    </div>
+</div>
+
+   <div class="form-group">
+       <label>Status</label>&nbsp;&nbsp;
+       <div class="form-check-inline">
+           <input type="radio" class="form-check-input" value="Registered" name="status" required ngModel>
+           <label class="form-check-label">Registered</label>
+       </div>
+       <div class="form-check-inline">
+           <input type="radio" class="form-check-input" value="Un-Registered" required name="status" ngModel>
+           <label class="form-check-label">Un-Registered</label>
+       </div>
+       </div>
+       <div class="form-group">
+       <label>Valid Upto</label>
+       <input type="date" class="form-control" name="validUpto" required ngModel [min]="minDate">
+   </div>
+   <br>
+   <button class="btn btn-primary" [disabled]="rideProvider.invalid">Add RideProvider</button>
+    </form>
+   </div>
+   

@@ -1,0 +1,55 @@
+<app-header></app-header>
+<div class="container">
+    <h3 class="text-primary">Ride Details</h3>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <th>Vehicle No</th>
+            <th>Car Name</th>
+            <th>Car Type</th>
+            <th>Fuel Type</th>
+            <th>No. Of Seats</th>
+            <th>Ride Time</th>
+            <th>Ride Date</th>
+            <th>Source</th>
+            <th>Destination</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rider of rideInfo" >
+              <td><a routerLink="/view-ride-details/{{rider.tripId}}">{{rider.vehicleNo}}</a> </td>
+              <td><a routerLink="/view-ride-details/{{rider.tripId}}">{{rider.carName}}</a></td>
+              <td><a routerLink="/view-ride-details/{{rider.tripId}}">{{rider.carType}}</a> </td>
+              <td><a routerLink="/view-ride-details/{{rider.tripId}}">{{rider.fuelType}}</a> </td>
+              <td><a routerLink="/view-ride-details/{{rider.tripId}}">{{rider.noOfSeats}}</a></td>
+              <td><a routerLink="/view-ride-details/{{rider.tripId}}">{{rider.rideTime}}</a> </td>
+              <td><a routerLink="/view-ride-details/{{rider.tripId}}">{{rider.rideDate}}</a> </td>
+              <td><a routerLink="/view-ride-details/{{rider.tripId}}">{{rider.source}}</a></td>
+              <td><a routerLink="/view-ride-details/{{rider.tripId}}">{{rider.destination}}</a> </td>
+ 
+           <button type="submit" style="color: red;" class="btn btn-danger" (click)="delete(rider)">Delete Ride</button>
+              <!-- <td><button type="submit" class="btn btn-primary" (click)="viewRides(rider.rpId)">View Rides</button></td>  -->
+            </tr>
+        </tbody>
+        <!-- <span>{{response.returnMsg}}</span> -->
+    </table>
+
+    <!-- <div class="trip-buttons">
+        <button (click)="showStart()">Start Trip</button>
+        <button (click)="showEnd()">End Trip</button>
+      </div>
+      
+      <div class="button-content">
+        {{ buttonContent }}
+      </div> -->
+
+
+      <!-- <div class="trip-buttons">
+        <button (click)="startTrip()" [disabled]="startDisabled">Start Trip</button>
+        <button (click)="endTrip()" [disabled]="endDisabled">End Trip</button>
+      </div>
+      
+      <div class="button-content">
+        {{ buttonContent }}
+      </div> -->
+      
+
+</div>

@@ -1,0 +1,82 @@
+<app-header></app-header>
+<div class="container">
+    <div class="h3 text-primary">Update Ride Information</div>
+        <form class="col-5" #rideInfo="ngForm" (ngSubmit)="onSubmit(rideInfo.value)">
+
+        <div class="form-group">
+       <label>Enter Vehicle No</label>
+       <input type="text" class="form-control" name="vehicleNo" readonly [(ngModel)]="ride.vehicleNo">
+   </div>
+   <!-- <div class="form-group">
+       <label>Car Type</label>
+       <input type="text" class="form-control" name="carType" ngModel [(ngModel)]="ride.carType">
+   </div> -->
+
+   <div class="form-group">
+       <label>Enter Vehicle Name</label>
+       <input type="text" class="form-control" name="carName" #carName="ngModel" ngModel required [(ngModel)]="ride.carName" >
+       <div *ngIf="carName.errors && (carName.dirty ||carName.touched)">
+        <p [hidden]="!carName.errors['required']"> Enter Car Name</p>
+    </div>
+   </div>
+
+   <label for="myDropdown">Car Type</label>
+   <select name="carType" class="form-control" ngModel [(ngModel)]="ride.carType"  required>
+     <option value="SEDAN">SEDAN</option>
+     <option value="SUV">SUV</option>
+   </select>
+<!-- 
+   <div class="form-group">
+    <label>Source</label>
+    <input type="text" class="form-control" name="source" #sourceRef="ngModel" ngModel required [(ngModel)]="ride.source">
+    <div *ngIf="sourceRef.errors && (sourceRef.dirty ||sourceRef.touched)">
+        <p [hidden]="!sourceRef.errors['required']"> Enter Source</p>
+    </div>
+</div> -->
+
+   <!-- <div class="form-group">
+    <label>Fuel Type</label>
+    <input type="text" class="form-control" name="fuelType" ngModel [(ngModel)]="ride.fuelType">
+</div> -->
+
+<label for="myDropdown">Fuel Type</label>
+   <select name="fuelType" class="form-control" ngModel [(ngModel)]="ride.fuelType" required>
+     <option value="PETROL">PETROL</option>
+     <option value="DIESEL">DIESEL</option>
+   </select>
+
+<div class="form-group">
+    <label>Ride Date</label>
+    <input type="date" class="form-control" name="rideDate" ngModel [(ngModel)]="ride.rideDate">
+</div>
+
+<div class="form-group">
+    <label>Ride Time</label>
+    <input type="time" class="form-control" name="rideTime" ngModel [(ngModel)]="ride.rideTime">
+</div>
+
+<div class="form-group">
+    <label>Source</label>
+    <input type="text" class="form-control" name="source"  #sourceRef="ngModel" ngModel required [(ngModel)]="ride.source">
+    <div *ngIf="sourceRef.errors && (sourceRef.dirty ||sourceRef.touched)">
+        <p [hidden]="!sourceRef.errors['required']"> Enter Source</p>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>Destination</label>
+    <input type="text" class="form-control" name="destination" #destinationref="ngModel"ngModel required [(ngModel)]="ride.destination">
+    <div *ngIf="destinationref.errors && (destinationref.dirty ||destinationref.touched)">
+        <p [hidden]="!destinationref.errors['required']"> Enter Destination</p>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>No of Seats</label>
+    <input type="text" class="form-control" name="noOfSeats" ngModel [(ngModel)]="ride.noOfSeats">
+</div>
+   <br>
+   <button type="submit" class="btn btn-primary" [disabled]="rideInfo.invalid">Update Ride</button>
+    </form>
+
+   

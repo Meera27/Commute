@@ -1,0 +1,46 @@
+<app-header></app-header>
+<div class="container">
+    <h3 class="text-primary">Generate Bill</h3>
+    <form class="col-5" #bill="ngForm" (ngSubmit)="onSubmit(bill.value)">
+        <table class="table table-striped table-bordered">
+            <tbody>
+                <tr>
+                    <td>vehicle No</td>
+                    <td>{{rideInfo.vehicleNo}}</td>
+                </tr>
+                <tr>
+                    <td>Car Type</td>
+                    <td>{{rideInfo.carType}}</td>
+                </tr>
+                <tr>
+                    <td>Fuel Type</td>
+                    <td>{{rideInfo.fuelType}}</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td>{{rideInfo.rideDate}}</td>
+                </tr>
+                <tr>
+                    <td>Time</td>
+                    <td>{{rideInfo.rideTime}}</td>
+                </tr>
+                <tr>
+                    <td>Number of Occupants</td>
+                    <td>{{trip.seatsFilled}}</td>
+                </tr>
+                <tr>
+                    <td>Number Of KM</td>
+                    <div class="form-group">
+                    <td>
+                        <input type="number" class="form-control" name="noOfKm" ngModel>
+                    </td>
+                    </div>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="submit" class="btn btn-primary" [disabled]="bill.invalid">Generate Bill</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

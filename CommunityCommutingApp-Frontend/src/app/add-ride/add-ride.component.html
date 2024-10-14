@@ -1,0 +1,87 @@
+<app-header></app-header>
+<div class="container">
+    <div class="h3 text-primary">Add Ride</div>
+        <form  #rideInfo="ngForm" (ngSubmit)="onSubmit(rideInfo.value)">
+
+        <div class="form-group">
+       <label>Vehicle No</label>
+       <input type="text" class="form-control" name="vehicleNo" #vehNoRef="ngModel" ngModel required>
+       <div *ngIf="vehNoRef.errors && (vehNoRef.touched || vehNoRef.dirty)">
+       <p [hidden]="!vehNoRef.errors['required']"> Enter Vehicle Number</p>
+       </div>
+   </div>
+
+   <div class="form-group">
+    <label>Vehicle Name</label>
+    <input type="text" class="form-control" name="carName" #vehicleName="ngModel" ngModel required>
+    <div *ngIf="vehicleName.errors && (vehicleName.dirty ||vehicleName.touched)">
+        <p [hidden]="!vehicleName.errors['required']"> Enter Vehicle Name</p>
+    </div>
+</div>
+   <!-- <div class="form-group">
+       <label>Car Type</label>
+       <input type="text" class="form-control" name="carType" ngModel>
+   </div> -->
+
+   <div class="form-group">
+   <label for="myDropdown">Car Type</label>
+   <select name="carType" class="form-control" ngModel required>
+    <option value="" disabled selected>Select Car Type</option>
+     <option value="SEDAN">SEDAN</option>
+     <option value="SUV">SUV</option>
+   </select>
+</div>
+
+<!--    
+   <div class="form-group">
+    <label>Fuel Type</label>
+    <input type="text" class="form-control" name="fuelType" ngModel>
+</div> -->
+ <div class="form-group">
+<label for="myDropdown">Fuel Type</label>
+   <select class="form-control" name="fuelType" ngModel required>
+    <option value="" disabled selected>Select Fuel Type</option>
+     <option value="PETROL">PETROL</option>
+     <option value="DIESEL">DIESEL</option>
+   </select>
+</div>
+
+<div class="form-group">
+    <label>Ride Date</label>
+    <input type="date" class="form-control" name="rideDate" [min]="minDate" ngModel required>
+    
+</div>
+
+<div class="form-group">
+    <label>Ride Time</label>
+    <input type="time" class="form-control" name="rideTime" [min]="minTime" ngModel required>
+</div>
+
+<div class="form-group">
+    <label>Source</label>
+    <input type="text" class="form-control" name="source" #sourceRef="ngModel" ngModel  required>
+    <div *ngIf="sourceRef.errors && (sourceRef.dirty ||sourceRef.touched)">
+        <p [hidden]="!sourceRef.errors['required']"> Enter Source</p>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>Destination</label>
+    <input type="text" class="form-control" #destination="ngModel" name="destination"  ngModel required>
+    <div *ngIf="destination.errors && (destination.dirty ||destination.touched)">
+        <p [hidden]="!destination.errors['required']"> Enter Destination</p>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>No of Seats</label>
+    <input type="text" class="form-control" #noOfSeats="ngModel" name="noOfSeats" ngModel required>
+    <div *ngIf="noOfSeats.errors && (noOfSeats.dirty ||noOfSeats.touched)">
+        <p [hidden]="!noOfSeats.errors['required']"> Enter No. of Seats</p>
+    </div>
+</div>
+   <br>
+   <button type="submit" class="btn btn-primary" [disabled]="rideInfo.invalid">Add Ride</button>
+    </form>
+
+   </div>
